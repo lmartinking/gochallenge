@@ -35,7 +35,7 @@ func makeAccount(username string, password string) Account {
 	return acct
 }
 
-func getAccount(username string) *Account {
+func GetAccount(username string) *Account {
 	for _, acct := range accounts {
 		if acct.username == username {
 			return &acct
@@ -45,7 +45,7 @@ func getAccount(username string) *Account {
 }
 
 func hasAccount(username string) bool {
-	return getAccount(username) != nil
+	return GetAccount(username) != nil
 }
 
 func AddAccount(username string, password string) bool {
@@ -62,7 +62,7 @@ func AuthAccount(username string, password string) bool {
 	if username == "" {
 		return false
 	}
-	acct := getAccount(username)
+	acct := GetAccount(username)
 	if acct == nil {
 		return false
 	}

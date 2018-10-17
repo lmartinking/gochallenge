@@ -34,7 +34,7 @@ func HandleLogin(w http.ResponseWriter, r *http.Request) {
 	authOk := AuthAccount(loginRequest.Username, loginRequest.Password)
 
 	if authOk {
-		account := getAccount(loginRequest.Username)
+		account := GetAccount(loginRequest.Username)
 		tok, err := MakeAccessToken(*account, Cfg.PrivKey)
 		if err != nil {
 			loginResponse.Error = err

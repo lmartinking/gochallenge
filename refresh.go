@@ -41,7 +41,7 @@ func HandleRefresh(w http.ResponseWriter, r *http.Request) {
 	if claims.TokenType != "refresh" {
 		refreshResp.Error = errors.New("Invalid token type")
 	} else {
-		acct := getAccount(claims.User)
+		acct := GetAccount(claims.User)
 		tok, err := MakeAccessToken(*acct, Cfg.PrivKey)
 		if err != nil {
 			refreshResp.Error = errors.New("Could not generate new token")
